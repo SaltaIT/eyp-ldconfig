@@ -10,10 +10,13 @@ class ldconfig(
                             $service_ensure        = 'running',
                             $service_enable        = true,
                           ) inherits ldconfig::params{
+  Exec {
+    path => '/usr/sbin:/usr/bin:/sbin:/bin',
+  }
 
-  class { '::ldconfig::install': } ->
-  class { '::ldconfig::config': } ~>
-  class { '::ldconfig::service': } ->
-  Class['::ldconfig']
+  exec{ 'eyp-ldconfig':
+    command     => 'ldconfig',
+    refreshonly => true,
+  }
 
 }
