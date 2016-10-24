@@ -1,6 +1,6 @@
 define ldconfig::diradd (
                           $path  = $name,
-                          $type  = "default",
+                          $type  = 'default',
                           $order = '28',
                         ) {
 
